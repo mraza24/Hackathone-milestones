@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Static Resume Generator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Static Resume Builder By Raza Ahmed</h1>
+    <form id="resumeform">
+        <fieldset>
+            <legend>Personal Information</legend>
+            <label for="name">Name: </label>
+            <input type="text" id="name" name="name" required><br><br>
+
+            <label for="email">Email: </label>
+            <input type="email" id="email" name="email" required><br><br>
+
+            <label for="phone">Phone: </label>
+            <input type="tel" id="phone" name="phone" required><br><br>
+        </fieldset>
+
+        <fieldset>
+            <legend>Education</legend>
+            <label for="education">Education: </label>
+            <textarea id="education" name="education" rows="4" required></textarea><br><br>
+        </fieldset>
+
+        <fieldset>
+            <legend>Experience</legend>
+            <label for="experience">Experience: </label>
+            <textarea id="experience" name="experience" rows="4" required></textarea><br><br>
+        </fieldset>
+
+        <fieldset>
+            <legend>Skills</legend>
+            <label for="skills">Skills: </label>
+            <textarea id="skills" name="skills" rows="4" required></textarea><br><br>
+        </fieldset>
+
+        <button type="submit">Generate Resume Below</button>
+    </form>
+
+    <div id="resumeOutput" style="margin-top: 20px; border: 1px solid #000; padding: 10px; display: none;">
+        <!-- Generated resume will appear here -->
+    </div>
+
+    <script>
+        document.getElementById('resumeform').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const education = document.getElementById('education').value;
+            const experience = document.getElementById('experience').value;
+            const skills = document.getElementById('skills').value;
+
+            const resumeContent = `
+                <h2>Generated Resume</h2>
+                <h3>Personal Information</h3>
+                <p><strong>Name:</strong> ${name}</p>
+                <p><strong>Email:</strong> ${email}</p>
+                <p><strong>Phone:</strong> ${phone}</p>
+                <h3>Education</h3>
+                <p>${education}</p>
+                <h3>Experience</h3>
+                <p>${experience}</p>
+                <h3>Skills</h3>
+                <p>${skills}</p>
+            `;
+
+            const resumeOutput = document.getElementById('resumeOutput');
+            resumeOutput.innerHTML = resumeContent;
+            resumeOutput.style.display = 'block';
+        });
+    </script>
+</body>
+</html>
